@@ -1,45 +1,34 @@
 'use strict';
 // Il programma dovrà chiedere all'utente il numero di chilometri che vuole percorrere e l'età del passeggero.
 
-const buttonReadText = document.querySelector('.generate-form');
-console.log(buttonReadText);
+// Bottone che crea il ticket
+const buttonGenerate = document.querySelector('.generate-form');
 
-buttonReadText.addEventListener('click', function(){
-    const elementInputKm = document.querySelector('[type="text"]');
-    console.log(elementInputKm.value);
-    const elementInputAge = document.querySelector('[type="number"]');
-    console.log(elementInputAge.value);
-})
+// Avviene quando si clicca sul bottone genera
+buttonGenerate.addEventListener('click', function () {
+    console.log('hai cliccato su genera');
 
-const generaForm = document.getElementById('generaForm');
-console.log(generaForm);
+    // Dati di input
+    const kmInput = document.getElementById('km-input');
+    const ageInput = document.getElementById('age-input');
 
-generaForm.addEventListener('submit', function (event){
-    event.preventDefault();
-})
+    // Dati per il prezzo del biglietto
+    const priceKm = 0.21;
+    const underDiscount = 20;
+    const overDiscount = 40;
 
-// Sulla base di queste informazioni dovrà calcolare il prezzo totale del viaggio, secondo queste regole:
-// il prezzo del biglietto è definito in base ai km (0.21 € al km)
+    let price = priceKm * Number(kmInput.value);
 
-const prezzoPieno = elementInputKm * 0.21;
-let prezzoScontato = prezzoPieno;
-
-if(!isNaN(elementInputKm) && !isNaN(elementInputAge)) {
-    console.log('chilometri e età sono dei numeri');
-    console.log('Questo è il prezzo iniziale:', prezzoPieno);
-    if(elementInputAge < 18) {
-        // va applicato uno sconto del 20% per i minorenni
-        prezzoScontato = prezzoPieno - (prezzoPieno * 20 / 100);
-    } else if(elementInputAge >= 65){
-        // va applicato uno sconto del 40% per gli over 65.
-        prezzoScontato = prezzoPieno - (prezzoPieno * 40 / 100);
+    // Se si verificano le condizioni applica i relativi sconti
+    if (parseInt(ageInput.value) < 18){
+        console.log('sconto under');
+        price -= (price / 100) * underDiscount;
+    } else if (parseInt(ageInput.value) >= 65) {
+        console.log('sconto over');
+        price -= (price / 100) * overDiscount;
     }
 
-} else {
-    console.log('uno dei dati inseriti non è un numero')
-}
-
-prezzoScontato = prezzoScontato.toFixed(2);
-
-console.log('Questo è il prezzo finale:', prezzoScontato);
-// L'output del prezzo finale va messo fuori in forma umana (con massimo due decimali, per indicare centesimi sul prezzo).
+    console.log(ageInput.value);
+    console.log(kmInput.value);
+    console.log(price.toFixed(2));
+});
