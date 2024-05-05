@@ -4,6 +4,14 @@
     box-sizing: border-box;
 }
 
+#button-section{
+    padding: 1rem;
+}
+
 .hidden{
     display: none;
+}
+
+#generated-ticket{
+    padding: 1rem;
 }
