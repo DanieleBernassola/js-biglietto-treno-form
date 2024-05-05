@@ -7,8 +7,6 @@ const buttonReset = document.querySelector('.reset-form');
 
 // Avviene quando si clicca sul bottone genera
 buttonGenerate.addEventListener('click', function () {
-    console.log('hai cliccato su genera');
-
     const ticketResult = document.getElementById('generated-ticket');
 
     // Dati di input
@@ -32,10 +30,8 @@ buttonGenerate.addEventListener('click', function () {
 
     // Se si verificano le condizioni applica i relativi sconti
     if (ageInput.value === 'under'){
-        console.log('sconto under');
         price -= (price / 100) * underDiscount;
     } else if (ageInput.value === 'over') {
-        console.log('sconto over');
         price -= (price / 100) * overDiscount;
     }
 
@@ -50,7 +46,6 @@ buttonGenerate.addEventListener('click', function () {
 });
 
 buttonReset.addEventListener('click', function() {
-    console.log('hai cliccato su annulla');
     const ticketResult = document.getElementById('generated-ticket');
 
     // Dichiaro nuovamente gli input altrimenti non posso utilizzarli
