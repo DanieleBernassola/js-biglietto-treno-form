@@ -39,10 +39,6 @@ buttonGenerate.addEventListener('click', function () {
         price -= (price / 100) * overDiscount;
     }
 
-    console.log(ageInput.value);
-    console.log(kmInput.value);
-    console.log(price.toFixed(2));
-
     // Risultato biglietto
     userNameOutput.innerText = userNameInput.value;    
     offerOutput.innerText = ageInput.value;
@@ -54,7 +50,16 @@ buttonGenerate.addEventListener('click', function () {
 });
 
 buttonReset.addEventListener('click', function() {
+    console.log('hai cliccato su annulla');
     const ticketResult = document.getElementById('generated-ticket');
+
+    // Dichiaro nuovamente gli input altrimenti non posso utilizzarli
+    const userNameInput = document.getElementById('name-user');
+    const kmInput = document.getElementById('km-input');
+    const ageInput = document.getElementById('age-input');
+    userNameInput.value = '';
+    kmInput.value = '';
+    ageInput.value = 'standard';
 
     ticketResult.classList.add('hidden');
 })
