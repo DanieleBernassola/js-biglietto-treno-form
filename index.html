@@ -4,14 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JS Biglietto treno</title>
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
 
-    <label for="km-input">Km</label>
-    <input type="number" id="km-input">
-    <label for="age-input">Età</label>
-    <input type="number" id="age-input">
-    <button class="generate-form">Genera</button>
+    <div id="button-section">
+        <!-- NOME -->
+        <label for="name-user">Nome Cognome</label>
+        <input type="text" id="name-user">
+    
+        <!-- CHILOMETRI -->
+        <label for="km-input">Km da percorrere</label>
+        <input type="number" id="km-input">
+    
+        <!-- ETà -->
+        <label for="age-input">Fascia d'età</label>
+        <select name="" id="age-input">
+            <option value="under">Minorenne</option>
+            <option value="standard">Maggiorenne</option>
+            <option value="over">Over 65</option>
+        </select>
+    
+        <!-- BOTTONI -->
+        <button class="generate-form">Genera</button>
+        <button class="reset-form">Annulla</button>
+    </div>
+
+    <div id="generated-ticket" class="hidden">
+        <h2>Nome passeggero</h2>
+        <div id="name-output"></div>
+    </div>
 
     <!-- INCLUSIONE JS -->
     <script src="./js/main.js"></script>

@@ -8,6 +8,8 @@ const buttonGenerate = document.querySelector('.generate-form');
 buttonGenerate.addEventListener('click', function () {
     console.log('hai cliccato su genera');
 
+    const ticketResult = document.getElementById('generated-ticket');
+
     // Dati di input
     const kmInput = document.getElementById('km-input');
     const ageInput = document.getElementById('age-input');
@@ -20,10 +22,10 @@ buttonGenerate.addEventListener('click', function () {
     let price = priceKm * Number(kmInput.value);
 
     // Se si verificano le condizioni applica i relativi sconti
-    if (parseInt(ageInput.value) < 18){
+    if (ageInput.value === 'under'){
         console.log('sconto under');
         price -= (price / 100) * underDiscount;
-    } else if (parseInt(ageInput.value) >= 65) {
+    } else if (ageInput.value === 'over') {
         console.log('sconto over');
         price -= (price / 100) * overDiscount;
     }
@@ -31,4 +33,6 @@ buttonGenerate.addEventListener('click', function () {
     console.log(ageInput.value);
     console.log(kmInput.value);
     console.log(price.toFixed(2));
+
+    ticketResult.classList.remove('hidden');
 });
